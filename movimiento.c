@@ -71,6 +71,12 @@ void imprimirMovimiento( stMovimiento aMostrar ) {
   printf("Poder: %d\n", aMostrar.poder);
 }
 
+void imprimirMovimientoSinTipo( stMovimiento aMostrar ) {
+  printf("ID: %d\n", aMostrar.id);
+  printf("Nombre: %s\n", aMostrar.nombre);
+  printf("Poder: %d\n", aMostrar.poder);
+}
+
 void mostrarMovimientos( movimientoNodo* arbol ) {
   if ( arbol ) {
     mostrarMovimientos( arbol->izquierda );
@@ -83,7 +89,7 @@ void mostrarMovimientos( movimientoNodo* arbol ) {
 stMovimiento crearMovimiento() {
   stMovimiento nuevoMovimiento;
   
-  printf("\nID: ");
+  printf("\n\nID: ");
   scanf("%d", &nuevoMovimiento.id);
   while( getchar() != '\n' );
   printf("Nombre: ");
@@ -109,4 +115,15 @@ void creacionDeNuevoMovimiento() {
   }
 
   fclose( archivo );
+}
+
+void mostrarMovimientosPorTipo( movimientoNodo* arbolDeMovimientos, int tipoBuscado ) {
+  if ( arbolDeMovimientos ) {
+    mostrarMovimientosPorTipo( arbolDeMovimientos->izquierda, tipoBuscado );
+    if( (arbolDeMovimientos->movimiento).tipo == tipoBuscado ) {
+      imprimirMovimientoSinTipo( arbolDeMovimientos->movimiento );
+      printf("\n");
+    }
+    mostrarMovimientosPorTipo( arbolDeMovimientos->derecha, tipoBuscado );
+  }
 }

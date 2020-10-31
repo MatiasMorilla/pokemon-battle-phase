@@ -26,6 +26,8 @@ movimientoNodo* inicArbolMovimientos();
 movimientoNodo* agregarMovimientoAlArbol( movimientoNodo* arbol, movimientoNodo* nodoNuevo );
 movimientoNodo* crearNodoMovimiento( stMovimiento movimientoNuevo );
 void imprimirMovimiento( stMovimiento aMostrar );
+void imprimirMovimientoSinTipo( stMovimiento aMostrar );
 void mostrarMovimientos( movimientoNodo* arbol );
 stMovimiento crearMovimiento();
 void creacionDeNuevoMovimiento();
+void mostrarMovimientosPorTipo( movimientoNodo* arbolDeMovimientos, int tipoBuscado );
