@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "stpoke.h"
 
 int main()
 {
-    printf("Hello world!\n");
-    return 0;
+  tipoNodo* listaDeTipos = cargarTiposDesdeArchivo( ARCHIVO_TIPOS );
+
+  return 0;
 }
