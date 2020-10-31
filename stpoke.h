@@ -2,26 +2,11 @@
 #include <stdlib.h>
 
 #include "tipos.h"
+#include "movimiento.h"
 
 #define MAX_LENGTH 20
 
 enum enGenero { femenino = 1, masculino = 2 };
-
-typedef struct {
-  int id;
-  char nombre[ MAX_LENGTH ];
-  int tipo;
-  int poder;
-  int esEspecial;
-
-} stMovimiento;
-
-typedef struct _movimientoNodo {
-  stMovimiento movimiento;
-
-  struct _movimientoNodo* izquierda;
-  struct _movimientoNodo* derecha;
-} movimientoNodo; // Nodo de arbol binario
 
 typedef struct {
   int idPokedex;
@@ -78,10 +63,8 @@ typedef struct _nodoGeneracion {
 
 void crearNuevaGeneracion( char archivoGeneraciones, nodoGeneracion* listaGeneraciones, char nombreNuevaGeneracion[MAX_LENGTH] );
 void crearNuevoPokemon( char nombreDeGeneracion[MAX_LENGTH] );
-movimientoNodo* cargarMovimientosDesdeArchivo( char archivoMovimientos[MAX_LENGTH] );
 nodoRegistroPokemon* cargarPokemonsEnGeneracion( char archivoGeneracion[MAX_LENGTH], nodoGeneracion* generacion );
 nodoGeneracion* cargarListaDeGeneraciones( char archivoGeneraciones[MAX_LENGTH] );
-movimientoNodo buscarMovimiento( movimientoNodo* arbolDeMovimientos, int idDelMovimientoBuscado );
 void obtenerConducta( char conducta[MAX_LENGTH] );
 void pokemonAtaca( pokemonDeJugador atacante, pokemonDeJugador receptor, int usaAtaqueEspecial );
 int calcularEficienciaDelAtaque( int idTipoDelAtaque, int idTiposDelPokemonDefensor[2] );

@@ -28,3 +28,4 @@ void mostrarTipos( tipoNodo* lista );
 void creacionDeNuevoTipo();
 float esDebilidad( stTipo tipoA, stTipo tipoB );
 float calcularEfectividadDelAtaque( tipoNodo* lista, int idTipoMovimiento, int idTipoDefensor1, int idTipoDefensor2 );
+stTipo crearTipo();

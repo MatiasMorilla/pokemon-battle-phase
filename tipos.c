@@ -48,25 +48,26 @@ tipoNodo* cargarTiposDesdeArchivo( char archivoTipos[] ) {
 void imprimirTipo( stTipo tipo ) {
   int i=0;
 
-  printf("Id: %d\n", tipo.id);
-  printf("Nombre: %s\n", tipo.nombre);
+  printf("%d\t", tipo.id);
+  printf("%s\t", tipo.nombre);
+  if ( strlen(tipo.nombre) < 8 ) printf("\t");
 
   while( tipo.idDebilidades[i] != -1 ) {
-    printf("Debilidad: %d\n", tipo.idDebilidades[i]);
+    printf("%d ", tipo.idDebilidades[i]);
     i++;
   }
 }
 
 void mostrarTipos( tipoNodo* lista ) {
-  if( lista ) {
-    imprimirTipo( lista->tipo );
+  printf("\nID\tNombre\t\tDebilidades\n");
+  while( lista ) {
     printf("\n");
-    mostrarTipos( lista->siguiente );
+    imprimirTipo( lista->tipo );
+    lista = lista->siguiente;
   }
 }
 
-void creacionDeNuevoTipo() {
-
+stTipo crearTipo() {
   stTipo nuevoTipo;
   int i= 0;
   int ultimoIngreso = 0;
@@ -84,6 +85,12 @@ void creacionDeNuevoTipo() {
     nuevoTipo.idDebilidades[i] = ultimoIngreso;
     i++;
   }
+
+  return nuevoTipo;
+}
+
+void creacionDeNuevoTipo() {
+  stTipo nuevoTipo = crearTipo();
 
   FILE* archivo= fopen( ARCHIVO_TIPOS, "ab" );
   if( archivo ) {
@@ -141,3 +148,5 @@ float calcularEfectividadDelAtaque( tipoNodo* lista, int idTipoMovimiento, int i
 
   return efectividad;
 }
+
+
